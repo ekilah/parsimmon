@@ -1331,6 +1331,29 @@ var eof = Parsimmon(function(input, i) {
   return makeSuccess(i, null);
 });
 
+var reTest = new RegExp(/[0-9]/)
+var reWithFlagTest = new RegExp(/[0-9]/i)
+var strTest = new RegExp("[0-9]")
+
+// eslint-disable-next-line no-console, no-undef
+console.warn('Debugging regexes:', {
+  re: {
+    asString: '' + reTest,
+    flagsDefined: typeof reTest.flags === 'string',
+    flags: reTest.flags,
+  },
+  reWithFlag: {
+    asString: '' + reWithFlagTest,
+    flagsDefined: typeof reWithFlagTest.flags === 'string',
+    flags: reWithFlagTest.flags,
+  },
+  str: {
+    asString: '' + strTest,
+    flagsDefined: typeof strTest.flags === 'string',
+    flags: strTest.flags,
+  },
+})
+
 var digit = regexp(/[0-9]/).desc("a digit");
 var digits = regexp(/[0-9]*/).desc("optional digits");
 var letter = regexp(/[a-z]/i).desc("a letter");

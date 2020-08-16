@@ -695,7 +695,13 @@ function formatError(input, error) {
 
 function flags(re) {
   var s = "" + re;
-  return s.slice(s.lastIndexOf("/") + 1);
+  var fs = s.slice(s.lastIndexOf("/") + 1);
+  if (fs === "undefined" || fs === undefined) {
+    // eslint-disable-next-line no-console, no-undef
+    console.warn('Flags of regex were undefined.', {re: re, s: s, fs: fs, typeofFs: typeof fs})
+    return ""
+  }
+  return fs
 }
 
 function anchoredRegexp(re) {
